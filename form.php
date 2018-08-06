@@ -16,6 +16,8 @@ th {text-align: left;}
 </style>
 </head>
 <body>
+<?php echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
+<br>
 
 <?php
 if($_GET['submit']=='ok'){
@@ -26,7 +28,7 @@ $sql="SELECT * FROM students WHERE sid= '".$q."'";
 $result = mysql_query($sql);
 echo "<table>
 <tr>
-<th>StudentID</th>
+<th>Id</th>
 <th>Name</th>
 <th>Contact</th>
 <th>Class</th>
@@ -74,7 +76,7 @@ mysql_close($bd);
    
         </form></center>
         
-        <?php echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
+       
     <h1>BreakFast : <?php switch($status){
         case 1:
         case 3: 

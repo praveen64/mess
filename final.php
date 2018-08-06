@@ -22,6 +22,7 @@ if($_GET['submit']=='ok'){
 include('config.php');
 $sid= intval($_GET['sid']);
 $status=intval($_GET['status']);
+$user="";
 $d=date('j');
 
 $sql3="SELECT `".$d."` FROM attend WHERE sid= '".$sid."'";
@@ -38,11 +39,11 @@ $status=7;
 $sql="UPDATE attend set `".$d."`='$status' WHERE sid= '".$sid."'";
 $result = mysql_query($sql);
 
-$sql2="SELECT `".$d."` FROM attend WHERE sid= '".$sid."'";
+$sql2="SELECT s.name,a.`".$d."` FROM students as s,attend as a  WHERE s.sid=a.sid and a.sid= '".$sid."'";
 $result2 = mysql_query($sql2);
 
 while($row = mysql_fetch_array($result2)) {
-    
+ $user=$row['name'];
  $status=$row[$d];
 }
 mysql_close($bd);
@@ -52,7 +53,12 @@ mysql_close($bd);
         <center>
     
 <?php echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
-    <h1>BreakFast : <?php switch($status){
+
+<h2>Thank you.. Mr.<?php echo $user ?></h2>
+<p>Successfully Updated...!</p>
+<br>
+
+    <h2>BreakFast : <?php switch($status){
         case 1:
         case 3: 
         case 5: 
@@ -64,8 +70,8 @@ mysql_close($bd);
             break;
          }
         
-        ?></h1>
-        <h1>Lunch : <?php switch($status){
+        ?></h2>
+        <h2>Lunch : <?php switch($status){
         case 1:
                  echo "No";
                  break;
@@ -80,8 +86,8 @@ mysql_close($bd);
                  break;
          }
         
-        ?></h1>
-        <h1>Dinner : <?php switch($status){
+        ?></h2>
+        <h2>Dinner : <?php switch($status){
         case 1:
         case 3:
              echo "No";
@@ -97,9 +103,9 @@ mysql_close($bd);
             break;
          }
         
-        ?></h1>
+        ?></h2>
     
-    ::::::::::: <a href="index.html" >Home</a> ::::::::::::::::::
+    :::::::::::  <a href="index.html" > Home </a> ::::::::::::::::::
     
     
     
