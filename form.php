@@ -21,7 +21,7 @@ th {text-align: left;}
 if($_GET['submit']=='ok'){
 include('config.php');
 $q = intval($_GET['q']);
-$d=date('d');
+$d=date('j');
 $sql="SELECT * FROM students WHERE sid= '".$q."'";
 $result = mysql_query($sql);
 echo "<table>

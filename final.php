@@ -22,8 +22,7 @@ if($_GET['submit']=='ok'){
 include('config.php');
 $sid= intval($_GET['sid']);
 $status=intval($_GET['status']);
-$d=date('d');
-
+$d=date('j');
 
 $sql3="SELECT `".$d."` FROM attend WHERE sid= '".$sid."'";
 $result3 = mysql_query($sql3);
@@ -60,28 +59,25 @@ mysql_close($bd);
         case 7:
             echo "Attended";
             break;
-        default :{
+        default :
             echo "No";
             break;
-        }
          }
         
         ?></h1>
         <h1>Lunch : <?php switch($status){
-        case 1: {
-            echo "No";
-            break;
-        }
+        case 1:
+                 echo "No";
+                 break;
         case 2:
         case 3:
         case 6:
         case 7:
-            echo "Attended";
-            break;
-        default :{
-            echo "No";
-            break;
-        }
+                  echo "Attended";
+                  break;
+        default :
+                 echo "No";
+                 break;
          }
         
         ?></h1>
@@ -96,10 +92,9 @@ mysql_close($bd);
         case 7:
             echo "Attended";
             break;
-        default :{
+        default :
             echo "No";
             break;
-        }
          }
         
         ?></h1>
