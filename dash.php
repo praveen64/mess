@@ -49,6 +49,38 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: center;
+    padding: 16px;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
+tr:nth-child(odd) {
+    background-color: grey;
+}
+
+tr:nth-child(even) {
+    background-color: darkgrey;
+}
+
+.fa-check {
+    color: green;
+}
+
+.fa-remove {
+    color: red;
+}
+
 </style>
   <style>
   body {
@@ -169,7 +201,7 @@ mysql_close($bd);
 </div>
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
-  <h3 class="margin">::Please Update Mess Info::</h3>
+  <h3 class="margin">:: Please Update Mess Info ::</h3>
   
       
 <form action="final.php" method="get" class="form-inline">
@@ -188,54 +220,67 @@ mysql_close($bd);
 
 
 
-  <h3 class='margin'>BreakFast : <?php switch($status){
+<h2>Today'<sup>s</sup> Attendance Table</h2>
+
+<table>
+  <tr style="background-color:#FFC300;">
+    <th style="width:50%;">Food Event</th>
+    <th>Attendence</th>
+  </tr>
+  <tr>
+    <td>BreakFast</td>
+     <?php switch($status){
         case 1:
         case 3: 
         case 5: 
         case 7:
-            echo "Attended";
+            echo "<td><i class='fa fa-check'></i></td>";
             break;
         default :
-            echo "No";
+            echo "<td><i class='fa fa-remove'></i></td>";
             break;
          }
         
-        ?></h3>
-        <h3 class='margin'>Lunch : <?php switch($status){
+        ?>
+  </tr>
+  <tr>      
+      <td>Lunch </td> <?php switch($status){
         case 1:
-                 echo "No";
+                 echo "<td><i class='fa fa-remove'></i></td>";
                  break;
         case 2:
         case 3:
         case 6:
         case 7:
-                  echo "Attended";
+                  echo "<td><i class='fa fa-check'></i></td>";
                   break;
         default :
-                 echo "No";
+                 echo "<td><i class='fa fa-remove'></i></td>";
                  break;
          }
         
-        ?></h3>
-        <h3 class='margin'>Dinner : <?php switch($status){
+        ?>
+  </tr>
+  <tr>
+        <td>Dinner</td><?php switch($status){
         case 1:
         case 3:
-             echo "No";
+             echo "<td><i class='fa fa-remove'></i></td>";
              break;
         case 4: 
         case 5:
         case 6:
         case 7:
-            echo "Attended";
+            echo "<td><i class='fa fa-check'></i></td>";
             break;
         default :
-            echo "No";
+            echo "<td><i class='fa fa-remove'></i></td>";
             break;
          } 
         
-        ?></h3>
-
-
+        ?>
+  </tr>
+</table>
 </div>
 
 <!-- Footer -->
