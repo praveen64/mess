@@ -7,8 +7,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title1 {
+  color: grey;
+  font-size: 18px;
+}
+
+.button1 {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.a1 {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+</style>
   <style>
   body {
       font: 20px Montserrat, sans-serif;
@@ -27,7 +68,7 @@
   }
   .bg-3 { 
       background-color: #ffffff; /* White */
-      color: #555555;
+      color: black;
   }
   .bg-4 { 
       background-color: #2f2f2f; /* Black Gray */
@@ -83,27 +124,22 @@ if($_GET['submit']=='ok'){
 include('config.php');
 $q = intval($_GET['q']);
 $d=date('j');
+$sid="0";
+$name="null";
+$contact="null";
+$classs="null";
+$room="null";
 $sql="SELECT * FROM students WHERE sid= '".$q."'";
 $result = mysql_query($sql);
-echo "<table class='table table-bordered'>
-<thead>
-<tr>
-<th>Id</th>
-<th>Name</th>
-<th>Contact</th>
-<th>Class</th>
-<th>Room</th>
-</tr><thead>";
 while($row = mysql_fetch_array($result)) {
-    echo "<tbody><tr>";
-    echo "<td>" . $row['sid'] . "</td>";
-    echo "<td>" . $row['name'] . "</td>";
-    echo "<td>" . $row['contact'] . "</td>";
-    echo "<td>" . $row['class'] . "</td>";
-    echo "<td>" . $row['room'] . "</td>";
-    echo "</tr></tbody>";
+    
+    $sid=$row['sid'];
+    $name=$row['name'];
+    $contact=$row['contact'];
+    $classs=$row['class'];
+    $room=$row['room'];
+   
 }
-echo "</table></div>";
 $sql2="SELECT `".$d."` FROM attend WHERE sid= '".$q."'";
 $result2 = mysql_query($sql2);
 
@@ -114,8 +150,23 @@ while($row = mysql_fetch_array($result2)) {
 mysql_close($bd);
 }
 ?>
-    
+ <!--Profile Contact card-->   
+    <h2 style="text-align:center">User Profile Card</h2>
 
+<div class="card bg-3">
+  <img src="images/img_avatar.png" alt="pic" style="width:100%">
+  <h1><?php echo $name ?></h1>
+  <p class="title1"><?php echo $classs ?></p>
+  <p>Room No: <?php echo $room ?></p>
+  <div style="margin: 24px 0;">
+    <a  href="#"><i class="fa fa-dribbble a1"></i></a> 
+    <a  href="#"><i class="fa fa-twitter a1"></i></a>  
+    <a  href="#"><i class="fa fa-linkedin a1"></i></a>  
+    <a  href="#"><i class="fa fa-facebook a1"></i></a> 
+ </div>
+ <p><button class="button1" ><a href="tel:<?php echo $contact ?>">Contact:  <?php echo  $contact ?></a></button></p>
+</div>
+</div>
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">::Please Update Mess Info::</h3>
