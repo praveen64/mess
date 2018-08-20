@@ -73,79 +73,54 @@ mysql_close($bd);
 
    
         </form></center>
-        <?php
-echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
+        
+        <?php echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
     <h1>BreakFast : <?php switch($status){
-        case 1: {
+        case 1:
+        case 3: 
+        case 5: 
+        case 7:
             echo "Attended";
             break;
-        }
-        case 3: {
-             echo "Attended";
-             break;
-        }
-        case 7: {
-            echo "Attended";
-            break;
-        }
-        default :{
+        default :
             echo "No";
             break;
-        }
          }
         
         ?></h1>
         <h1>Lunch : <?php switch($status){
-        case 1: {
-            echo "No";
-            break;
-        }
-        case 3: {
-             echo "Attended";
-             break;
-        }
-        case 2:{
-            echo "Attended";
-            break;
-         }
-        
-        case 7: {
-            echo "Attended";
-            break;
-        }
-        default :{
-            echo "No";
-            break;
-        }
+        case 1:
+                 echo "No";
+                 break;
+        case 2:
+        case 3:
+        case 6:
+        case 7:
+                  echo "Attended";
+                  break;
+        default :
+                 echo "No";
+                 break;
          }
         
         ?></h1>
         <h1>Dinner : <?php switch($status){
-        case 1: {
-            echo "No";
-            break;
-        }
-        case 3: {
+        case 1:
+        case 3:
              echo "No";
              break;
-        }
-        
-        case 4: {
+        case 4: 
+        case 5:
+        case 6:
+        case 7:
             echo "Attended";
             break;
-        }
-        case 7: {
-            echo "Attended";
-            break;
-        }
-        default :{
+        default :
             echo "No";
             break;
-        }
          }
         
         ?></h1>
-    
     
     
     

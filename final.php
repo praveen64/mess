@@ -54,18 +54,12 @@ mysql_close($bd);
     
 <?php echo "Today is " . date("d/m/Y/l") . "<br>"; ?>
     <h1>BreakFast : <?php switch($status){
-        case 1: {
+        case 1:
+        case 3: 
+        case 5: 
+        case 7:
             echo "Attended";
             break;
-        }
-        case 3: {
-             echo "Attended";
-             break;
-        }
-        case 7: {
-            echo "Attended";
-            break;
-        }
         default :{
             echo "No";
             break;
@@ -78,18 +72,12 @@ mysql_close($bd);
             echo "No";
             break;
         }
-        case 2:{
+        case 2:
+        case 3:
+        case 6:
+        case 7:
             echo "Attended";
             break;
-        }
-        case 3: {
-             echo "Attended";
-             break;
-        }
-        case 7: {
-            echo "Attended";
-            break;
-        }
         default :{
             echo "No";
             break;
@@ -98,22 +86,16 @@ mysql_close($bd);
         
         ?></h1>
         <h1>Dinner : <?php switch($status){
-        case 1: {
-            echo "No";
-            break;
-        }
-        case 3: {
+        case 1:
+        case 3:
              echo "No";
              break;
-        }
-        case 4: {
+        case 4: 
+        case 5:
+        case 6:
+        case 7:
             echo "Attended";
             break;
-        }
-        case 7: {
-            echo "Attended";
-            break;
-        }
         default :{
             echo "No";
             break;
